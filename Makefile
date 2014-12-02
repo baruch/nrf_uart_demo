@@ -1,5 +1,5 @@
-CCFLAGS=-Iinclude/ -Isrc/--std-c99 -I _target_sdcc_nrf24le1_32/include/ --opt-code-size
-LDFLAGS= -Lsrc/
+CCFLAGS=-Isdk/include -Isdk --std-c99 -I sdk/_target_sdcc_nrf24le1_32/include/ --opt-code-size
+LDFLAGS= -Lsdk/src/
 PROGRAMS = main
 SOURCES = ${PROGRAMS:=.c}
 
