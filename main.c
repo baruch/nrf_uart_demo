@@ -59,6 +59,8 @@ void main()
 
 	uart_configure_8_n_1_19200();
 
+	puts("Starting up\r\n");
+
 	// Startup LED flashing to indicate program startup
 	for (i = 0; i < 10; i++) {
 		flash_led(1000);
@@ -77,8 +79,9 @@ void main()
 				t = 100;
 
 			flash_led(t);
+			putchar(ch);
 		}
-		delay_ms(100);
+		delay_ms(1000);
 
 		// To succeed to send disabling RX is needed
 		uart_rx_disable();
