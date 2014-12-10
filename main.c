@@ -2,32 +2,8 @@
 #include <stdio.h>
 
 #include "gpio.h"
-#include "src/gpio/src/gpio_pin_configure.c"
-#include "src/gpio/src/gpio_pin_val_clear.c"
-#include "src/gpio/src/gpio_pin_val_set.c"
-
 #include "delay.h"
-#include "src/delay/src/delay_us.c"
-#include "src/delay/src/delay_s.c"
-#include "src/delay/src/delay_ms.c"
-
 #include "uart.h"
-#include "src/uart/src/uart_configure_manual_baud_calc.c"
-#include "src/uart/src/uart_calc_actual_baud_rate_from_s0rel.c"
-#include "src/uart/src/uart_calc_s0rel_value.c"
-#include "src/uart/src/uart_calc_actual_baud_rate_from_th1.c"
-#include "src/uart/src/uart_calc_th1_value.c"
-#include "src/uart/src/uart_send_wait_for_complete.c"
-#include "src/uart/src/uart_wait_for_rx_and_get.c"
-#include "src/uart/src/putchar.c"
-
-#include "timer1.h"
-#include "src/timer1/src/timer1_configure.c"
-
-#include "pwr_clk_mgmt.h"
-#include "src/pwr_clk_mgmt/src/pwr_clk_mgmt_get_cclk_freq_in_hz.c"
-
-#include "interrupt.h"
 
 void flash_led(int t)
 {
