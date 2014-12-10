@@ -2,12 +2,21 @@ TARGET=_target_sdcc_nrf24le1_32
 CCFLAGS=-Isdk/include --std-c99 -I sdk/$(TARGET)/include/ --opt-code-size
 LDFLAGS= -Lsdk/$(TARGET)/lib -lnrf24le1
 PROGRAMS = main.ihx
-SOURCES = ${PROGRAMS/.ihx/.c}
+SOURCES = ${PROGRAMS:ihx=c}
 
-all: ${PROGRAMS}
+all: .deps ${PROGRAMS}
+
+-include .deps
+
+.deps: ${SOURCES}
+	sdcc $(CCFLAGS) -M $(SOURCES) > .deps.tmp
+	sed -i -e 's/.rel:/.ihx:/' .deps.tmp
+	mv .deps.tmp .deps
 
 ${PROGRAMS}: ${SOURCES}
 	sdcc --model-large $(CCFLAGS) $(LDFLAGS) main.c
 
 clean:
-	rm -rf  main.asm  main.cdb  main.ihx  main.lk  main.lst  main.map  main.mem  main.omf  main.rel  main.rst  main.sym
+	rm -rf  main.asm  main.cdb  main.ihx  main.lk  main.lst  main.map  main.mem  main.omf  main.rel  main.rst  main.sym .deps
+
+.PHONY: all clean
